@@ -1,7 +1,13 @@
+JSON PARSING In JAVA USING WEB SERVICE
+
 Hello !
 
-The "SimpleJsonParsingExample.java" contains simple code in java to parse the JSON data we get.
-In this example, we hit a URL and parse the data we get.
-The data received from the URL is not saved in the Hard Drive. Thus, the parsing is very fast !
+The "JsonParsingExample.java" contains code in JAVA to parse the JSON data.
+In this example, we call a web service by hitting URL and parse the data we get.
+The JSON data we receive is directly used to parse. So, the data is not stored in hard drive. 
+Thus, the parsing process becomes fast !
 
-Add "json_simple-1.1.jar" to your library. 
+NOTE:- Add "json-simple-1.1.1.jar" to your library. 
+
+Guys, I hope this code will be useful for you !
+
