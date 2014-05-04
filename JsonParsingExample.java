@@ -1,5 +1,5 @@
 
-package simplejsonparsingexample;
+package jsonparsingexample;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,29 +13,34 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class SimpleJsonParsingExample {
+public class JsonParsingExample {
 
     public static void main(String[] args) {
         try {
+		    // Calling the web service by hitting URL
             URLConnection url = new URL("http://api.openweathermap.org/data/2.5/weather?q=Mumbai,India").openConnection();
             InputStream is = url.getInputStream();
             InputStreamReader isr = new InputStreamReader(is);
             
+			// Creating a parser object that is used to parse.
             JSONParser parser = new JSONParser();
             Object obj = parser.parse(isr);
             JSONObject jsonObject = (JSONObject) obj;
             
+			// Creating an object of JSONObject and getting its contents.
             JSONObject coordObj1 = (JSONObject) jsonObject.get("coord");        
             Double lon=(Double) coordObj1.get("lon");      
             Double lat=(Double) coordObj1.get("lat");
             System.out.println("Longitude :"+lon+", Latitude :"+lat);
-                           
+                  
+            // Get the data from "sys" and display				  
             JSONObject sysobj = (JSONObject) jsonObject.get("sys");              
             String country= (String) sysobj.get("country");          
             Long sunrise=(Long) sysobj.get("sunrise");            
             Long sunset=(Long) sysobj.get("sunset");
             System.out.println("Country :"+country+",      Sunrise :"+sunrise+",      Sunset :"+sunset);
        
+	        // Get the data from "weather" and display. "weather" is an Array.
             JSONArray mJsonArray =(JSONArray) jsonObject.get("weather") ;
             JSONObject mJsonObject = new JSONObject();
             for (int i = 0; i < mJsonArray.size(); i++) {
@@ -49,6 +54,7 @@ public class SimpleJsonParsingExample {
             String base = (String) jsonObject.get("base");
             System.out.println("Base :"+base);
                    
+			// Get the data from "main" and display	   
             JSONObject mainobj = (JSONObject) jsonObject.get("main");
             Double temp=(Double) mainobj.get("temp");       
             Long humidity1 =(Long) mainobj.get("humidity");    
@@ -78,9 +84,9 @@ public class SimpleJsonParsingExample {
             Long cod = (Long) jsonObject.get("cod");
             System.out.println("Cod :"+cod);
         } catch (ParseException ex) {
-            Logger.getLogger(SimpleJsonParsingExample.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JsonParsingExample.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(SimpleJsonParsingExample.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JsonParsingExample.class.getName()).log(Level.SEVERE, null, ex);
         } 
         
     }
