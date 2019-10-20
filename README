@@ -1,6 +1,6 @@
 JSON PARSING In JAVA USING WEB SERVICE
 
-Hello !
+Hello!
 
 The "JsonParsingExample.java" contains code in JAVA to parse the JSON data.
 In this example, we call a web service by hitting URL and parse the data we get.
@@ -10,4 +10,3 @@ Thus, the parsing process becomes fast !
 NOTE:- Add "json-simple-1.1.1.jar" to your library. 
 
 Guys, I hope this code will be useful for you !
-
